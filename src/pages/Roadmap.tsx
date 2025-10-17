@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ModeToggle } from "@/components/mode-toggle"
+import { DonationDialog } from "@/components/donation-dialog"
 import {
   LogIn,
   LayoutDashboard,
@@ -18,7 +19,6 @@ import {
   Lock,
   Zap,
   ArrowRight,
-  ExternalLink,
   CheckCircle,
   Clock,
   Rocket,
@@ -284,19 +284,14 @@ export default function Roadmap() {
           <Card className="bg-primary border-none">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl md:text-4xl text-primary-foreground mb-4">
-                Quer Contribuir?
+                Gostou do RuthesApp?
               </CardTitle>
               <CardDescription className="text-primary-foreground/80 text-base md:text-lg">
-                O RuthesApp é um projeto aberto! Contribuições são bem-vindas. Abra issues, faça PRs ou compartilhe ideias.
+                Se você aprecia este projeto, considere apoiar o desenvolvimento com uma doação via PIX!
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
-              <a href="https://github.com/ruthesdev/RuthesAppMain" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="secondary" className="w-full sm:w-auto text-base">
-                  Contribuir no GitHub
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </Button>
-              </a>
+              <DonationDialog />
               <a href="/">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto text-base border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
                   Voltar para Home

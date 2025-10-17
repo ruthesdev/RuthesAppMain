@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { ModeToggle } from "@/components/mode-toggle"
+import { DonationDialog } from "@/components/donation-dialog"
 import { 
   Zap,
   Package,
@@ -120,7 +121,7 @@ export default function Home() {
                 Pronto para Começar?
               </CardTitle>
               <CardDescription className="text-primary-foreground/80 text-base md:text-lg">
-                Explore a documentação, veja o roadmap de funcionalidades e inicie seu projeto hoje.
+                Use o RuthesApp como base para seu próximo projeto e veja como é fácil e rápido!
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
@@ -142,9 +143,12 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full border-t bg-card/50 backdrop-blur-sm">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center text-sm text-muted-foreground">
-            <p className="mb-2">Desenvolvedor: <a href="https://ruthes.dev" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-foreground transition-colors">RuthesDev</a></p>
-            <p>© 2025 RuthesApp. Código aberto e disponível para todos.</p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left text-sm text-muted-foreground">
+              <p className="mb-2">Desenvolvedor: <a href="https://ruthes.dev" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-foreground transition-colors">RuthesDev</a></p>
+              <p>© 2025 RuthesApp. Código aberto e disponível para todos.</p>
+            </div>
+            <DonationDialog />
           </div>
         </div>
       </footer>

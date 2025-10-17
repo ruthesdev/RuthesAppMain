@@ -2,6 +2,8 @@
 
 Um boilerplate profissional e completo para acelerar o desenvolvimento de aplicações React com TypeScript, Tailwind CSS e componentes UI reutilizáveis.
 
+**🌐 Demo ao Vivo**: [ruthesappmain.ruthes.dev](https://ruthesappmain.ruthes.dev)
+
 ## ✨ Destaques
 
 - 🎨 **30+ Componentes UI** - Shadcn/UI + Radix UI prontos para usar
@@ -11,6 +13,8 @@ Um boilerplate profissional e completo para acelerar o desenvolvimento de aplica
 - 🔧 **ESLint Configurado** - Padrão de código garantido
 - 📱 **Totalmente Responsivo** - Funciona em qualquer dispositivo
 - ⚡ **Performance Otimizada** - Builds rápidos e bundle pequeno
+- 📚 **Documentação Completa** - 7 páginas de documentação
+- 🗺️ **Roadmap Transparente** - 8 funcionalidades planejadas
 
 ## 🛠️ Stack Tecnológico
 
@@ -188,21 +192,58 @@ npm install
 # ... e depois instale as dependências manualmente
 ```
 
-## 🤝 Contribuindo
+## 💰 Apoiar o Projeto
 
-Sugestões e melhorias são bem-vindas!
+Se você gosta do RuthesApp e quer apoiar o desenvolvimento, pode fazer uma **doação via PIX**:
+
+### 💳 PIX por QR Code
+Escaneie o código QR disponível no modal de doações da aplicação.
+
+### 💬 PIX por Email
+```
+jefter@ruthes.dev
+```
+
+**Toda e qualquer contribuição financeira é bem-vinda e ajuda a manter o projeto ativo!**
 
 ## 📄 Licença
 
 Este projeto está disponível para uso livre em múltiplos projetos.
 
-## 🔗 Recursos Úteis
+## � Sobre
 
+**RuthesApp** é um boilerplate moderno desenvolvido para servir como base sólida e profissional para novos projetos React. Inclui:
+
+- ✅ Setup completo com todas as dependências necessárias
+- ✅ 40+ componentes UI reutilizáveis e customizáveis
+- ✅ Sistema de tema dark/light integrado
+- ✅ Documentação técnica abrangente
+- ✅ Roadmap transparente com 8 funcionalidades planejadas
+- ✅ Pronto para produção
+
+**Razão Social**: RUTHES NETWORK LTDA - ME  
+**Nome Fantasia**: RUTHES NETWORK  
+**CNPJ**: 41.892.334/0001-02  
+**Demo ao Vivo**: [ruthesappmain.ruthes.dev](https://ruthesappmain.ruthes.dev)
+
+## �🔗 Links e Recursos
+
+### Demo & Repositório
+- **Demo ao Vivo**: [ruthesappmain.ruthes.dev](https://ruthesappmain.ruthes.dev)
+- **Repositório GitHub**: [github.com/ruthesdev/RuthesAppMain](https://github.com/ruthesdev/RuthesAppMain)
+- **Fork este Projeto**: [github.com/ruthesdev/RuthesAppMain/fork](https://github.com/ruthesdev/RuthesAppMain/fork)
+
+### Documentação Técnica
 - [React Documentation](https://react.dev)
 - [Vite Guide](https://vite.dev)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Radix UI Docs](https://www.radix-ui.com)
 - [Shadcn/UI Docs](https://ui.shadcn.com)
+
+### Developer
+- **Desenvolvedor**: [RuthesDev](https://ruthes.dev)
+- **Email**: [jefter@ruthes.dev](mailto:jefter@ruthes.dev)
+- **Website**: [https://ruthes.dev](https://ruthes.dev)
 
 ---
 
