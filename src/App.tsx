@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@/components/theme-provider'
 import Home from './pages/Home'
 import Roadmap from './pages/Roadmap'
+import { Login } from './pages/Login'
 import DocumentacaoIndex from './pages/documentacao'
 import DocumentacaoVite from './pages/documentacao/vite'
 import DocumentacaoReact from './pages/documentacao/react'
@@ -24,6 +25,8 @@ function App() {
 
   const renderPage = () => {
     switch (currentPath) {
+      case '/login':
+        return <Login />
       case '/roadmap':
         return <Roadmap />
       case '/documentacao':

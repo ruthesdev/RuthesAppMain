@@ -41,6 +41,9 @@ export default function Home() {
             </nav>
             <div className="flex items-center gap-4">
               <ModeToggle />
+              <a href="/login">
+                <Button variant="outline" size="sm">Entrar</Button>
+              </a>
               <a href="https://github.com/ruthesdev/RuthesAppMain/fork" target="_blank" rel="noopener noreferrer">
                 <Button>Fork Agora</Button>
               </a>
