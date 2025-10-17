@@ -6,7 +6,7 @@ Um boilerplate profissional e completo para acelerar o desenvolvimento de aplica
 
 ## ✨ Destaques
 
-- 🎨 **30+ Componentes UI** - Shadcn/UI + Radix UI prontos para usar
+- 🎨 **40+ Componentes UI** - Shadcn/UI + Radix UI prontos para usar
 - 🌓 **Tema Dark/Light** - Toggle automático com persistência
 - 📦 **Vite + React 19** - Build rápido e Hot Module Replacement
 - 🎯 **TypeScript** - Type safety em todo o projeto
@@ -15,6 +15,8 @@ Um boilerplate profissional e completo para acelerar o desenvolvimento de aplica
 - ⚡ **Performance Otimizada** - Builds rápidos e bundle pequeno
 - 📚 **Documentação Completa** - 7 páginas de documentação
 - 🗺️ **Roadmap Transparente** - 8 funcionalidades planejadas
+- 🔐 **Página de Login** - Com validação de formulário e tema integrado
+- 💰 **Sistema de Doações** - PIX com QR Code e email integrado
 
 ## 🛠️ Stack Tecnológico
 
@@ -67,15 +69,20 @@ npm run preview  # Preview do build de produção
 ```
 src/
 ├── components/
-│   ├── ui/                    # 30+ componentes reutilizáveis
+│   ├── ui/                    # 40+ componentes reutilizáveis
 │   │   ├── button.tsx
 │   │   ├── card.tsx
 │   │   ├── dialog.tsx
 │   │   └── ... (muitos mais)
+│   ├── login-form.tsx         # Formulário de login
+│   ├── donation-dialog.tsx    # Dialog de doações PIX
 │   ├── mode-toggle.tsx        # Toggle tema escuro/claro
 │   └── theme-provider.tsx     # Provider de tema
 ├── pages/
-│   └── Home.tsx               # Página inicial
+│   ├── Home.tsx               # Página inicial
+│   ├── Login.tsx              # Página de login
+│   ├── Roadmap.tsx            # Roadmap do projeto
+│   └── documentacao/          # Páginas de documentação
 ├── hooks/
 │   └── use-mobile.ts          # Hook para detecção mobile
 ├── lib/

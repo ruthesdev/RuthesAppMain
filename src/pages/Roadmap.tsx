@@ -29,16 +29,16 @@ export default function Roadmap() {
     {
       id: 1,
       title: "Sistema de Login",
-      description: "Autenticação com JWT, suporte a OAuth2, esqueceu a senha e verificação de email",
+      description: "Página de login profissional com validação de formulário e tema integrado",
       icon: LogIn,
-      status: "planejado", // planejado, em-progresso, concluido
+      status: "concluido", // planejado, em-progresso, concluido
       quarter: "Q4 2025",
       features: [
-        "Autenticação com JWT",
-        "OAuth2 (Google, GitHub)",
-        "2FA (Two-Factor Authentication)",
-        "Recuperação de senha",
-        "Verificação de email"
+        "Formulário de login responsivo",
+        "Validação de email e senha",
+        "Tema dark/light integrado",
+        "Design profissional",
+        "Pronto para integração backend"
       ]
     },
     {
