@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@/components/theme-provider'
+import { appConfig } from '@/config/app.config'
 import Home from './pages/Home'
 import Roadmap from './pages/Roadmap'
 import { Login } from './pages/Login'
@@ -55,7 +56,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider defaultTheme="system" storageKey="ruthesapp-ui-theme">
+    <ThemeProvider defaultTheme="system" storageKey={`${appConfig.app.name.toLowerCase()}-ui-theme`}>
       {renderPage()}
     </ThemeProvider>
   )

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { appConfig } from "@/config/app.config"
 import {
   Dialog,
   DialogContent,
@@ -13,7 +14,7 @@ import { Heart, Mail, Copy, Check } from "lucide-react"
 export function DonationDialog() {
   const [copied, setCopied] = useState(false)
   const [open, setOpen] = useState(false)
-  const pixEmail = "jefter@ruthes.dev"
+  const pixEmail = appConfig.donation.email
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(pixEmail)
@@ -33,10 +34,10 @@ export function DonationDialog() {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Heart className="h-5 w-5 text-red-500" />
-            Apoie o RuthesApp
+            Apoie o {appConfig.app.name}
           </DialogTitle>
           <DialogDescription>
-            Se você gosta do RuthesApp e quer apoiar o desenvolvimento, você pode fazer uma doação via PIX!
+            Se você gosta do {appConfig.app.name} e quer apoiar o desenvolvimento, você pode fazer uma doação via PIX!
           </DialogDescription>
         </DialogHeader>
 

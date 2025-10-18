@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { appConfig } from "@/config/app.config"
 import { Card, CardContent } from "@/components/ui/card"
 import {
   Field,
@@ -22,7 +23,7 @@ export function LoginForm({
               <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-2xl font-bold">Bem-vindo de volta</h1>
                 <p className="text-muted-foreground text-balance">
-                  Faça login em sua conta RuthesApp
+                  Faça login em sua conta {appConfig.app.name}
                 </p>
               </div>
               <Field>

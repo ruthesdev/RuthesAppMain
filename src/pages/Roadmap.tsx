@@ -9,6 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { ModeToggle } from "@/components/mode-toggle"
 import { DonationDialog } from "@/components/donation-dialog"
+import { appConfig } from "@/config/app.config"
 import {
   LogIn,
   LayoutDashboard,
@@ -174,7 +175,7 @@ export default function Roadmap() {
           <div className="flex items-center justify-between">
             <a href="/">
               <h1 className="text-2xl font-bold text-foreground hover:opacity-80 transition-opacity">
-                RuthesApp
+                {appConfig.app.name}
               </h1>
             </a>
             <nav className="hidden md:flex gap-6">
@@ -184,13 +185,13 @@ export default function Roadmap() {
               <a href="/documentacao" className="text-muted-foreground hover:text-foreground transition-colors">
                 Documentação
               </a>
-              <a href="https://github.com/ruthesdev/RuthesAppMain" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href={appConfig.urls.github} className="text-muted-foreground hover:text-foreground transition-colors">
                 GitHub
               </a>
             </nav>
             <div className="flex items-center gap-4">
               <ModeToggle />
-              <a href="https://github.com/ruthesdev/RuthesAppMain/fork" target="_blank" rel="noopener noreferrer">
+              <a href={appConfig.urls.fork} target="_blank" rel="noopener noreferrer">
                 <Button>Fork Agora</Button>
               </a>
             </div>
@@ -307,8 +308,8 @@ export default function Roadmap() {
       <footer className="w-full border-t bg-card/50 backdrop-blur-sm">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center text-sm text-muted-foreground">
-            <p className="mb-2">Desenvolvedor: <a href="https://ruthes.dev" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-foreground transition-colors">RuthesDev</a></p>
-            <p>© 2025 RuthesApp. Código aberto e disponível para todos.</p>
+            <p className="mb-2">Desenvolvedor: <a href={appConfig.author.url} target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-foreground transition-colors">{appConfig.author.name}</a></p>
+            <p>© 2025 {appConfig.app.name}. Código aberto e disponível para todos.</p>
           </div>
         </div>
       </footer>

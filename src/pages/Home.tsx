@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card"
 import { ModeToggle } from "@/components/mode-toggle"
 import { DonationDialog } from "@/components/donation-dialog"
+import { appConfig } from "@/config/app.config"
 import { 
   Zap,
   Package,
@@ -25,7 +26,7 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <a href="/">
               <h1 className="text-2xl font-bold text-foreground hover:opacity-80 transition-opacity">
-                RuthesApp
+                {appConfig.app.name}
               </h1>
             </a>
             <nav className="hidden md:flex gap-6">
@@ -35,7 +36,7 @@ export default function Home() {
               <a href="/documentacao" className="text-muted-foreground hover:text-foreground transition-colors">
                 Documentação
               </a>
-              <a href="https://github.com/ruthesdev/RuthesAppMain" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href={appConfig.urls.github} className="text-muted-foreground hover:text-foreground transition-colors">
                 GitHub
               </a>
             </nav>
@@ -44,7 +45,7 @@ export default function Home() {
               <a href="/login">
                 <Button variant="outline" size="sm">Entrar</Button>
               </a>
-              <a href="https://github.com/ruthesdev/RuthesAppMain/fork" target="_blank" rel="noopener noreferrer">
+              <a href={appConfig.urls.fork} target="_blank" rel="noopener noreferrer">
                 <Button>Fork Agora</Button>
               </a>
             </div>
@@ -56,7 +57,7 @@ export default function Home() {
       <section className="w-full px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="w-full max-w-5xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
-            RuthesApp Boilerplate
+            {appConfig.app.name} Boilerplate
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 max-w-3xl mx-auto px-4">
             Seu ponto de partida para projetos React modernos e escaláveis
@@ -70,7 +71,7 @@ export default function Home() {
                 Explorar Documentação
               </Button>
             </a>
-            <a href="https://github.com/ruthesdev/RuthesAppMain" target="_blank" rel="noopener noreferrer">
+            <a href={appConfig.urls.github} target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="outline" className="w-full sm:w-auto text-base">
                 Ver no GitHub
                 <ExternalLink className="ml-2 h-4 w-4" />
@@ -128,7 +129,7 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
-              <a href="https://github.com/ruthesdev/RuthesAppMain/fork" target="_blank" rel="noopener noreferrer">
+              <a href={appConfig.urls.fork} target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="secondary" className="w-full sm:w-auto text-base">
                   Fork no GitHub
                 </Button>
@@ -148,8 +149,8 @@ export default function Home() {
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-center sm:text-left text-sm text-muted-foreground">
-              <p className="mb-2">Desenvolvedor: <a href="https://ruthes.dev" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-foreground transition-colors">RuthesDev</a></p>
-              <p>© 2025 RuthesApp. Código aberto e disponível para todos.</p>
+              <p className="mb-2">Desenvolvedor: <a href={appConfig.author.url} target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-foreground transition-colors">{appConfig.author.name}</a></p>
+              <p>© 2025 {appConfig.app.name}. Código aberto e disponível para todos.</p>
             </div>
             <DonationDialog />
           </div>

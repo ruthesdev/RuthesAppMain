@@ -1,4 +1,5 @@
 import { DashboardLayout } from "@/layouts/dashboard-layout"
+import { appConfig } from "@/config/app.config"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { BarChart3, Users, Bell, Lock, ArrowRight } from "lucide-react"
@@ -36,13 +37,13 @@ export function Dashboard() {
   ]
 
   return (
-    <DashboardLayout userName="João Silva" pageTitle="Dashboard">
+    <DashboardLayout userName={appConfig.app.defaultUserName} pageTitle="Dashboard">
       <div className="space-y-8">
         {/* Header */}
         <div>
           <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
           <p className="text-muted-foreground">
-            Bem-vindo ao painel administrativo do RuthesApp
+            Bem-vindo ao painel administrativo do {appConfig.app.name}
           </p>
         </div>
 

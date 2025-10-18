@@ -1,6 +1,7 @@
 import { DocumentationLayout } from '@/components/documentation-layout'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { appConfig } from '@/config/app.config'
 import { ArrowRight, Package, Code2, Palette, Zap, GitBranch } from 'lucide-react'
 
 export default function DocumentacaoIndex() {
@@ -62,14 +63,14 @@ export default function DocumentacaoIndex() {
             <CardTitle className="text-lg">Desenvolvedor</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="font-semibold text-foreground">RuthesDev</p>
+            <p className="font-semibold text-foreground">{appConfig.author.name}</p>
             <a
-              href="https://ruthes.dev"
+              href={appConfig.author.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline text-sm mt-2 inline-block"
             >
-              ruthes.dev →
+              {appConfig.author.url.replace('https://', '')} →
             </a>
           </CardContent>
         </Card>
@@ -81,7 +82,7 @@ export default function DocumentacaoIndex() {
           <CardContent>
             <p className="font-semibold text-foreground">GitHub</p>
             <a
-              href="https://github.com/ruthesdev/RuthesAppMain"
+              href={appConfig.urls.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline text-sm mt-2 inline-block"
@@ -96,7 +97,7 @@ export default function DocumentacaoIndex() {
             <CardTitle className="text-lg">Versão</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="font-semibold text-foreground">1.0.0</p>
+            <p className="font-semibold text-foreground">{appConfig.app.version}</p>
             <Badge className="mt-2">Produção</Badge>
           </CardContent>
         </Card>

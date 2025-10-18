@@ -1,4 +1,5 @@
 import { DashboardLayout } from "@/layouts/dashboard-layout"
+import { appConfig } from "@/config/app.config"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -45,7 +46,7 @@ export function DashboardUsuarios() {
   ]
 
   return (
-    <DashboardLayout userName="João Silva" pageTitle="Usuários">
+    <DashboardLayout userName={appConfig.app.defaultUserName} pageTitle="Usuários">
       <div className="space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between">

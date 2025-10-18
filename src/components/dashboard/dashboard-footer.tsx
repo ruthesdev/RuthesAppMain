@@ -1,3 +1,5 @@
+import { appConfig } from "@/config/app.config"
+
 export function DashboardFooter() {
   const currentYear = new Date().getFullYear()
 
@@ -8,7 +10,7 @@ export function DashboardFooter() {
           {/* Left Section */}
           <div className="text-center md:text-left">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} RuthesApp. Todos os direitos reservados.
+              © {currentYear} {appConfig.app.name}. Todos os direitos reservados.
             </p>
           </div>
 
@@ -39,12 +41,12 @@ export function DashboardFooter() {
             <p className="text-xs text-muted-foreground/70">
               Desenvolvido por{" "}
               <a
-                href="https://ruthes.dev"
+                href={appConfig.author.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground transition-colors"
               >
-                RuthesDev
+                {appConfig.author.name}
               </a>
             </p>
           </div>

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { appConfig } from "@/config/app.config"
 import { 
   LayoutDashboard,
   Users,
@@ -91,7 +92,7 @@ export function DashboardSidebar({ isCollapsed = false, onToggle }: DashboardSid
         </div>
         
         {!isCollapsed && (
-          <h2 className="font-bold text-lg ml-3">RuthesApp</h2>
+          <h2 className="font-bold text-lg ml-3">{appConfig.app.name}</h2>
         )}
         
         {/* Toggle Button - Overlapping border */}
