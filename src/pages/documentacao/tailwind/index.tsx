@@ -105,11 +105,15 @@ export default function DocumentacaoTailwind() {
               <p className="text-sm text-muted-foreground">
                 Use as classes CSS variables para criar componentes consistentes:
               </p>
-              <div className="bg-background border rounded p-2 text-xs mt-2">
-                <pre className="text-muted-foreground">
+              <div className="bg-background border rounded p-2 md:p-3 text-xs md:text-sm overflow-x-auto mt-2">
+                <pre className="text-muted-foreground whitespace-pre">
 {`<div className="bg-background text-foreground">
   Fundo com cor de background e texto com cor de foreground
-</div>`}
+</div>
+
+<button className="px-4 py-2 bg-primary text-primary-foreground rounded hover:opacity-90">
+  Botão primário
+</button>`}
                 </pre>
               </div>
             </CardContent>

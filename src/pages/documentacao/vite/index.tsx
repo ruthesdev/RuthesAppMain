@@ -74,8 +74,8 @@ export default function DocumentacaoVite() {
       {/* Configuração */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-foreground mb-4">Configuração do Vite</h2>
-        <div className="bg-card border rounded-lg p-4 overflow-x-auto">
-          <pre className="text-sm text-muted-foreground">
+        <div className="bg-card border rounded-lg p-2 md:p-4 text-xs md:text-sm overflow-x-auto">
+          <pre className="text-muted-foreground whitespace-pre">
 {`import path from "path"
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react-swc"
