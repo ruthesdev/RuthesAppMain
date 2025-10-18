@@ -2,6 +2,8 @@ import { ThemeProvider } from '@/components/theme-provider'
 import Home from './pages/Home'
 import Roadmap from './pages/Roadmap'
 import { Login } from './pages/Login'
+import { Dashboard } from './pages/dashboard'
+import { DashboardUsuarios } from './pages/dashboard/usuarios'
 import DocumentacaoIndex from './pages/documentacao'
 import DocumentacaoVite from './pages/documentacao/vite'
 import DocumentacaoReact from './pages/documentacao/react'
@@ -27,6 +29,10 @@ function App() {
     switch (currentPath) {
       case '/login':
         return <Login />
+      case '/dashboard':
+        return <Dashboard />
+      case '/dashboard/usuarios':
+        return <DashboardUsuarios />
       case '/roadmap':
         return <Roadmap />
       case '/documentacao':

@@ -17,6 +17,7 @@ Um boilerplate profissional e completo para acelerar o desenvolvimento de aplica
 - 🗺️ **Roadmap Transparente** - 8 funcionalidades planejadas
 - 🔐 **Página de Login** - Com validação de formulário e tema integrado
 - 💰 **Sistema de Doações** - PIX com QR Code e email integrado
+- 📊 **Dashboard Administrativo** - Com sidebar colapsável, navegação organizada e gestão de usuários
 
 ## 🛠️ Stack Tecnológico
 
@@ -74,6 +75,10 @@ src/
 │   │   ├── card.tsx
 │   │   ├── dialog.tsx
 │   │   └── ... (muitos mais)
+│   ├── dashboard/             # Componentes do dashboard
+│   │   ├── dashboard-header.tsx
+│   │   ├── dashboard-sidebar.tsx
+│   │   └── dashboard-footer.tsx
 │   ├── login-form.tsx         # Formulário de login
 │   ├── donation-dialog.tsx    # Dialog de doações PIX
 │   ├── mode-toggle.tsx        # Toggle tema escuro/claro
@@ -82,7 +87,13 @@ src/
 │   ├── Home.tsx               # Página inicial
 │   ├── Login.tsx              # Página de login
 │   ├── Roadmap.tsx            # Roadmap do projeto
+│   ├── dashboard/             # Páginas do dashboard administrativo
+│   │   ├── index.tsx          # Dashboard principal
+│   │   └── usuarios/
+│   │       └── index.tsx      # Gestão de usuários
 │   └── documentacao/          # Páginas de documentação
+├── layouts/
+│   └── dashboard-layout.tsx   # Layout wrapper do dashboard
 ├── hooks/
 │   └── use-mobile.ts          # Hook para detecção mobile
 ├── lib/

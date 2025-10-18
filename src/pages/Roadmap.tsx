@@ -44,16 +44,16 @@ export default function Roadmap() {
     {
       id: 2,
       title: "Dashboard Principal",
-      description: "Interface de painel de controle com widgets, gráficos e análises em tempo real",
+      description: "Interface de painel de controle com sidebar colapsável, header dinâmico e navegação organizada",
       icon: LayoutDashboard,
-      status: "planejado",
+      status: "concluido",
       quarter: "Q4 2025",
       features: [
-        "Dashboard responsivo",
-        "Widgets customizáveis",
-        "Gráficos interativos",
-        "Análise de dados",
-        "Exportação de relatórios"
+        "Sidebar colapsável com modo ícone",
+        "Header com título dinâmico da página",
+        "Navegação com submenus",
+        "Detecção automática de rota ativa",
+        "Gestão de usuários integrada"
       ]
     },
     {
