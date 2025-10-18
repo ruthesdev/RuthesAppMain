@@ -53,6 +53,11 @@ export interface RuthesAppTableProps<TData> {
   data: TData[]
   onDataChange?: (data: TData[]) => void
   isReorderable?: boolean
+  searchValue?: string
+  onSearchChange?: (value: string) => void
+  searchPlaceholder?: string
+  actionButton?: React.ReactNode
+  addButton?: React.ReactNode
   pagination?: {
     pageSize?: number
   }
@@ -63,6 +68,11 @@ export function RuthesAppTable<TData extends { id: string | number }>({
   data: initialData,
   onDataChange,
   isReorderable = false,
+  searchValue = "",
+  onSearchChange,
+  searchPlaceholder = "Buscar...",
+  actionButton,
+  addButton,
   pagination = { pageSize: 10 },
 }: RuthesAppTableProps<TData>) {
   const [data, setData] = React.useState(() => initialData)
@@ -120,19 +130,19 @@ export function RuthesAppTable<TData extends { id: string | number }>({
   return (
     <div className="w-full flex flex-col gap-4">
       {/* Toolbar */}
-      <div className="flex items-center justify-between px-4">
+      <div className="flex items-center justify-between px-4 gap-2 flex-wrap">
         <div className="text-muted-foreground hidden flex-1 text-sm lg:flex">
           {table.getFilteredSelectedRowModel().rows.length} de{" "}
           {table.getFilteredRowModel().rows.length} linha(s) selecionada(s).
         </div>
 
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="flex items-center gap-2 ml-auto flex-wrap justify-end">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
                 <IconLayoutColumns className="mr-2" />
-                <span className="hidden lg:inline">Personalizar Colunas</span>
-                <span className="lg:hidden">Colunas</span>
+                <span className="hidden md:inline">Personalizar Colunas</span>
+                <span className="md:hidden">Colunas</span>
                 <IconChevronDown className="ml-2" />
               </Button>
             </DropdownMenuTrigger>
@@ -160,6 +170,20 @@ export function RuthesAppTable<TData extends { id: string | number }>({
                 })}
             </DropdownMenuContent>
           </DropdownMenu>
+
+          {onSearchChange && (
+            <input
+              type="text"
+              placeholder={searchPlaceholder}
+              value={searchValue}
+              onChange={(e) => onSearchChange(e.target.value)}
+              className="w-40 sm:w-48 md:w-58 h-9 px-3 py-1 bg-muted border border-input rounded-md text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            />
+          )}
+          
+          {actionButton && <>{actionButton}</>}
+          
+          {addButton && <>{addButton}</>}
         </div>
       </div>
 

@@ -3,8 +3,7 @@ import { DashboardLayout } from "@/layouts/dashboard-layout"
 import { appConfig } from "@/config/app.config"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Plus, Search, Edit, Trash2 } from "lucide-react"
+import { Plus, Edit, Trash2 } from "lucide-react"
 import { RuthesAppTable } from "@/components/ruthesapp"
 import * as React from "react"
 
@@ -231,6 +230,13 @@ const USUARIOS_INICIAIS: Usuario[] = [
 
 export function DashboardUsuarios() {
   const [usuariosData, setUsuariosData] = React.useState<Usuario[]>(USUARIOS_INICIAIS)
+  const [searchTerm, setSearchTerm] = React.useState("")
+
+  // Filtrar dados baseado na busca
+  const usuariosFiltrados = usuariosData.filter((usuario) =>
+    usuario.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    usuario.email.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   const columns: ColumnDef<Usuario>[] = [
     {
@@ -292,50 +298,33 @@ export function DashboardUsuarios() {
   return (
     <DashboardLayout userName={appConfig.app.defaultUserName} pageTitle="Usuários">
       <div className="space-y-8">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">Usuários</h1>
-            <p className="text-muted-foreground">
-              Gerencie todos os usuários do sistema
-            </p>
-          </div>
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            Novo Usuário
-          </Button>
-        </div>
-
-        {/* Search and Filter */}
-        <Card>
-          <CardHeader>
-            <div className="flex gap-4">
-              <div className="flex-1 relative">
-                <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Buscar usuários..."
-                  className="pl-10"
-                />
-              </div>
-              <Button variant="outline">Filtros</Button>
-            </div>
-          </CardHeader>
-        </Card>
-
         {/* Users Table */}
         <Card>
           <CardHeader>
-            <CardTitle>Lista de Usuários</CardTitle>
-            <CardDescription>
-              Total de {usuariosData.length} usuários cadastrados
-            </CardDescription>
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex-1">
+                <CardTitle>Lista de Usuários</CardTitle>
+                <CardDescription>
+                  Total de {usuariosData.length} usuários cadastrados
+                </CardDescription>
+              </div>
+            </div>
           </CardHeader>
           <CardContent>
             <RuthesAppTable
               columns={columns}
-              data={usuariosData}
+              data={usuariosFiltrados}
               onDataChange={setUsuariosData}
               isReorderable={true}
+              searchValue={searchTerm}
+              onSearchChange={setSearchTerm}
+              searchPlaceholder="Buscar por nome ou email..."
+              addButton={
+                <Button variant="default" size="sm">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Novo Usuário
+                </Button>
+              }
               pagination={{ pageSize: 10 }}
             />
           </CardContent>
