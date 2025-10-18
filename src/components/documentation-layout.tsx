@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react'
 import { Button } from '@/components/ui/button'
+import { appConfig } from '@/config/app.config'
 import { ModeToggle } from '@/components/mode-toggle'
-import { ChevronRight, Globe } from 'lucide-react'
+import { ChevronRight, Globe, Menu } from 'lucide-react'
+import { useState } from 'react'
 
 interface DocumentationLayoutProps {
   children: ReactNode
@@ -16,6 +18,8 @@ export function DocumentationLayout({
   description, 
   currentPath = '/' 
 }: DocumentationLayoutProps) {
+  const [navOpen, setNavOpen] = useState(false)
+
   const navItems = [
     { label: 'Visão Geral', path: '/documentacao' },
     { label: 'Vite', path: '/documentacao/vite' },
@@ -31,15 +35,15 @@ export function DocumentationLayout({
       {/* Header */}
       <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <a href="/" className="text-2xl font-bold text-foreground hover:text-primary transition-colors">
-            RuthesApp
+          <a href="/" className="text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-colors truncate">
+            {appConfig.app.name}
           </a>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <a
-              href="https://github.com/ruthesdev/RuthesAppMain"
+              href={appConfig.urls.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
               title="GitHub"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -47,53 +51,64 @@ export function DocumentationLayout({
               </svg>
             </a>
             <a
-              href="https://ruthes.dev"
+              href={appConfig.author.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
               title="Portfólio"
             >
               <Globe className="h-5 w-5" />
             </a>
             <ModeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setNavOpen(!navOpen)}
+              className="lg:hidden"
+              title="Menu"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
           </div>
         </div>
       </header>
 
       <div className="flex flex-col lg:flex-row">
         {/* Sidebar Navigation */}
-        <aside className="w-full lg:w-64 border-b lg:border-b-0 lg:border-r bg-card/30">
-          <nav className="sticky top-20 p-4 space-y-2 overflow-y-auto max-h-[calc(100vh-80px)]">
-            {navItems.map((item) => (
-              <a key={item.path} href={item.path}>
-                <Button
-                  variant={currentPath === item.path ? 'default' : 'ghost'}
-                  className="w-full justify-start"
-                >
-                  <ChevronRight className="h-4 w-4 mr-2" />
-                  {item.label}
-                </Button>
-              </a>
-            ))}
-          </nav>
-        </aside>
+        {(navOpen || typeof window === 'undefined' || window.innerWidth >= 1024) && (
+          <aside className={`w-full lg:w-64 border-b lg:border-b-0 lg:border-r bg-card/30 ${navOpen ? 'block' : 'hidden lg:block'}`}>
+            <nav className="sticky top-20 p-4 space-y-2 overflow-y-auto max-h-[calc(100vh-80px)]">
+              {navItems.map((item) => (
+                <a key={item.path} href={item.path} onClick={() => setNavOpen(false)}>
+                  <Button
+                    variant={currentPath === item.path ? 'default' : 'ghost'}
+                    className="w-full justify-start text-sm md:text-base"
+                  >
+                    <ChevronRight className="h-4 w-4 mr-2 flex-shrink-0" />
+                    <span className="truncate">{item.label}</span>
+                  </Button>
+                </a>
+              ))}
+            </nav>
+          </aside>
+        )}
 
         {/* Main Content */}
-        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-12 max-w-4xl mx-auto w-full">
+        <main className="flex-1 px-3 sm:px-6 lg:px-8 py-8 md:py-12 max-w-4xl mx-auto w-full">
           {/* Page Header */}
           <div className="mb-8 pb-8 border-b">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-3">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3">
               {title}
             </h1>
             {description && (
-              <p className="text-lg text-muted-foreground max-w-2xl">
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
                 {description}
               </p>
             )}
           </div>
 
           {/* Content */}
-          <div className="space-y-6 text-sm leading-7">
+          <div className="space-y-6 text-sm md:text-base leading-7">
             {children}
           </div>
 

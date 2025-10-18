@@ -29,24 +29,24 @@ export default function Home() {
                 {appConfig.app.name}
               </h1>
             </a>
-            <nav className="hidden md:flex gap-6">
-              <a href="/roadmap" className="text-muted-foreground hover:text-foreground transition-colors">
+            <nav className="hidden md:flex gap-4 lg:gap-6">
+              <a href="/roadmap" className="text-muted-foreground hover:text-foreground transition-colors text-sm lg:text-base">
                 Roadmap
               </a>
-              <a href="/documentacao" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/documentacao" className="text-muted-foreground hover:text-foreground transition-colors text-sm lg:text-base">
                 Documentação
               </a>
-              <a href={appConfig.urls.github} className="text-muted-foreground hover:text-foreground transition-colors">
+              <a href={appConfig.urls.github} className="text-muted-foreground hover:text-foreground transition-colors text-sm lg:text-base">
                 GitHub
               </a>
             </nav>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
               <ModeToggle />
-              <a href="/login">
-                <Button variant="outline" size="sm">Entrar</Button>
+              <a href="/login" className="hidden sm:block">
+                <Button variant="outline" size="sm" className="text-xs md:text-sm">Entrar</Button>
               </a>
-              <a href={appConfig.urls.fork} target="_blank" rel="noopener noreferrer">
-                <Button>Fork Agora</Button>
+              <a href={appConfig.urls.fork} target="_blank" rel="noopener noreferrer" className="hidden sm:block">
+                <Button size="sm" className="text-xs md:text-sm">Fork</Button>
               </a>
             </div>
           </div>
