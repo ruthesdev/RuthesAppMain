@@ -310,13 +310,13 @@ export function RuthesAppTable<TData extends { id: string | number }>({
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between px-2">
-        <div className="flex-1 text-sm text-muted-foreground">
-          Página {paginationState.pageIndex + 1} de{" "}
-          {table.getPageCount()}
-        </div>
+      <div className="flex flex-col gap-4 px-2">
+        <div className="flex items-center justify-between gap-4 flex-wrap">
+          <div className="flex-1 text-sm text-muted-foreground">
+            Página {paginationState.pageIndex + 1} de{" "}
+            {table.getPageCount()}
+          </div>
 
-        <div className="flex items-center gap-6 lg:gap-8">
           <div className="flex items-center gap-2">
             <p className="text-sm font-medium">Linhas por página</p>
             <Select
@@ -337,25 +337,25 @@ export function RuthesAppTable<TData extends { id: string | number }>({
               </SelectContent>
             </Select>
           </div>
+        </div>
 
-          <div className="flex gap-1">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}
-            >
-              Anterior
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}
-            >
-              Próximo
-            </Button>
-          </div>
+        <div className="flex gap-1 justify-end">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Anterior
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Próximo
+          </Button>
         </div>
       </div>
     </div>
