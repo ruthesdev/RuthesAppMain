@@ -74,8 +74,8 @@ export default function DocumentacaoReact() {
       {/* Estrutura de Componentes */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-foreground mb-4">Estrutura de Componentes</h2>
-        <div className="bg-card border rounded-lg p-4 overflow-x-auto">
-          <pre className="text-sm text-muted-foreground">
+        <div className="bg-card border rounded-lg p-2 md:p-4 overflow-x-auto">
+          <pre className="text-xs md:text-sm text-muted-foreground whitespace-pre">
 {`src/
 ├── components/
 │   ├── ui/              # Componentes Shadcn/UI
@@ -105,11 +105,15 @@ export default function DocumentacaoReact() {
               <p className="text-sm text-muted-foreground mb-3">
                 Sempre use componentes funcionais com Hooks em vez de class components:
               </p>
-              <div className="bg-background border rounded p-2 text-xs">
-                <pre className="text-muted-foreground">
+              <div className="bg-background border rounded p-2 md:p-3 text-xs md:text-sm overflow-x-auto">
+                <pre className="text-muted-foreground whitespace-pre">
 {`function MyComponent() {
   const [count, setCount] = useState(0)
-  return <button onClick={() => setCount(count + 1)}>{count}</button>
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      {count}
+    </button>
+  )
 }`}
                 </pre>
               </div>

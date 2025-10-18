@@ -83,8 +83,8 @@ export default function DocumentacaoTailwind() {
               <p className="text-sm text-muted-foreground mb-3">
                 O projeto usa CSS custom properties para tema dinâmico:
               </p>
-              <div className="bg-background border rounded p-2 text-xs">
-                <pre className="text-muted-foreground">
+              <div className="bg-background border rounded p-2 md:p-3 text-xs md:text-sm overflow-x-auto">
+                <pre className="text-muted-foreground whitespace-pre">
 {`:root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;

@@ -113,16 +113,27 @@ export default function DocumentacaoTypeScript() {
               <CardTitle className="text-sm">Tipagem de Props</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-background border rounded p-2 text-xs">
-                <pre className="text-muted-foreground">
+              <div className="bg-background border rounded p-2 md:p-3 text-xs md:text-sm overflow-x-auto">
+                <pre className="text-muted-foreground whitespace-pre">
 {`interface ButtonProps {
   children: React.ReactNode
   onClick: () => void
   disabled?: boolean
 }
 
-function Button({ children, onClick, disabled }: ButtonProps) {
-  return <button onClick={onClick} disabled={disabled}>{children}</button>
+function Button({ 
+  children, 
+  onClick, 
+  disabled 
+}: ButtonProps) {
+  return (
+    <button 
+      onClick={onClick} 
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  )
 }`}
                 </pre>
               </div>
