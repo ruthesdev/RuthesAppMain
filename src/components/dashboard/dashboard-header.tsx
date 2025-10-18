@@ -1,16 +1,36 @@
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
-import { LogOut } from "lucide-react"
+import { LogOut, Menu } from "lucide-react"
 
 interface DashboardHeaderProps {
   userName?: string
   pageTitle?: string
+  onMenuClick?: () => void
+  showMenuButton?: boolean
 }
 
-export function DashboardHeader({ userName = "Usuário", pageTitle = "Dashboard" }: DashboardHeaderProps) {
+export function DashboardHeader({ 
+  userName = "Usuário", 
+  pageTitle = "Dashboard",
+  onMenuClick,
+  showMenuButton = false
+}: DashboardHeaderProps) {
   return (
     <header className="w-full border-b bg-card/50 backdrop-blur-sm sticky top-0 z-40">
       <div className="flex items-center justify-between h-16 px-4 md:px-6">
+        {/* Menu Button Mobile */}
+        {showMenuButton && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onMenuClick}
+            className="md:hidden"
+            title="Menu"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+        )}
+
         {/* Page Title */}
         <h1 className="text-xl font-bold text-foreground">
           {pageTitle}
