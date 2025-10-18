@@ -2,7 +2,8 @@ import type { ReactNode } from 'react'
 import { Button } from '@/components/ui/button'
 import { appConfig } from '@/config/app.config'
 import { ModeToggle } from '@/components/mode-toggle'
-import { ChevronRight, Globe, Menu } from 'lucide-react'
+import { DonationDialog } from '@/components/donation-dialog'
+import { ChevronRight, Globe, Menu, Instagram } from 'lucide-react'
 import { useState } from 'react'
 
 interface DocumentationLayoutProps {
@@ -59,6 +60,15 @@ export function DocumentationLayout({
             >
               <Globe className="h-5 w-5" />
             </a>
+            <a
+              href={appConfig.author.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
+              title="Instagram"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
             <ModeToggle />
             <Button
               variant="ghost"
@@ -114,29 +124,43 @@ export function DocumentationLayout({
 
           {/* Footer */}
           <footer className="mt-16 pt-8 border-t">
-            <div className="text-center text-sm text-muted-foreground space-y-3">
-              <p>
-                Desenvolvido por{' '}
-                <a
-                  href="https://ruthes.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline font-semibold"
-                >
-                  RuthesDev
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              {/* Left: Info */}
+              <div className="text-sm text-muted-foreground space-y-3">
+                <p>
+                  Desenvolvido por{' '}
+                  <a
+                    href="https://ruthes.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline font-semibold"
+                  >
+                    RuthesDev
+                  </a>
+                </p>
+                <p>
+                  <a
+                    href="https://github.com/ruthesdev/RuthesAppMain"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Repositório GitHub
+                  </a>
+                </p>
+                <p>© 2025 RuthesApp. Todos os direitos reservados.</p>
+              </div>
+              
+              {/* Right: Donation Button */}
+              <div className="flex gap-3 flex-shrink-0">
+                <a href={appConfig.author.instagram} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="gap-2">
+                    <Instagram className="h-4 w-4" />
+                    Seguir
+                  </Button>
                 </a>
-              </p>
-              <p>
-                <a
-                  href="https://github.com/ruthesdev/RuthesAppMain"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  Repositório GitHub
-                </a>
-              </p>
-              <p>© 2025 RuthesApp. Todos os direitos reservados.</p>
+                <DonationDialog />
+              </div>
             </div>
           </footer>
         </main>

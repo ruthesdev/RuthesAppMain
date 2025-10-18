@@ -20,6 +20,7 @@ export const appConfig = {
     email: import.meta.env.VITE_AUTHOR_EMAIL || "jefter@ruthes.dev",
     url: import.meta.env.VITE_AUTHOR_URL || "https://ruthes.dev",
     github: import.meta.env.VITE_AUTHOR_GITHUB || "https://github.com/ruthesdev",
+    instagram: import.meta.env.VITE_AUTHOR_INSTAGRAM || "https://instagram.com/ruthesdev",
   },
 
   // URLs do Projeto
