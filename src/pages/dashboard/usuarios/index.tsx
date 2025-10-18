@@ -275,14 +275,16 @@ export function DashboardUsuarios() {
       id: "actions",
       header: "Ações",
       cell: () => (
-        <div className="flex gap-2 justify-end">
-          <Button variant="ghost" size="icon">
+        <>
+          <div className="flex gap-2 items-center cursor-pointer hover:bg-muted p-2 rounded text-sm">
             <Edit className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon">
-            <Trash2 className="h-4 w-4 text-destructive" />
-          </Button>
-        </div>
+            <span>Editar</span>
+          </div>
+          <div className="flex gap-2 items-center cursor-pointer text-destructive hover:bg-muted p-2 rounded text-sm">
+            <Trash2 className="h-4 w-4" />
+            <span>Deletar</span>
+          </div>
+        </>
       ),
     },
   ]

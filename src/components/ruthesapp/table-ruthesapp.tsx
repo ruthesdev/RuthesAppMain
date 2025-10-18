@@ -5,6 +5,7 @@ import {
   IconChevronDown,
   IconChevronUp,
   IconLayoutColumns,
+  IconDots,
 } from "@tabler/icons-react"
 import {
   flexRender,
@@ -121,8 +122,8 @@ export function RuthesAppTable<TData extends { id: string | number }>({
       {/* Toolbar */}
       <div className="flex items-center justify-between px-4">
         <div className="text-muted-foreground hidden flex-1 text-sm lg:flex">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredSelectedRowModel().rows.length} de{" "}
+          {table.getFilteredRowModel().rows.length} linha(s) selecionada(s).
         </div>
 
         <div className="flex items-center gap-2 ml-auto">
@@ -130,8 +131,8 @@ export function RuthesAppTable<TData extends { id: string | number }>({
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
                 <IconLayoutColumns className="mr-2" />
-                <span className="hidden lg:inline">Customize Columns</span>
-                <span className="lg:hidden">Columns</span>
+                <span className="hidden lg:inline">Personalizar Colunas</span>
+                <span className="lg:hidden">Colunas</span>
                 <IconChevronDown className="ml-2" />
               </Button>
             </DropdownMenuTrigger>
@@ -230,7 +231,10 @@ export function RuthesAppTable<TData extends { id: string | number }>({
                       aria-label="Select row"
                     />
                   </TableCell>
-                  {row.getVisibleCells().map((cell) => (
+                  {row
+                    .getVisibleCells()
+                    .filter((cell) => cell.column.id !== "actions")
+                    .map((cell) => (
                     <TableCell key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
@@ -238,6 +242,33 @@ export function RuthesAppTable<TData extends { id: string | number }>({
                       )}
                     </TableCell>
                   ))}
+                  {row.getVisibleCells().some((cell) => cell.column.id === "actions") && (
+                    <TableCell className="w-12">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" size="icon" className="h-8 w-8">
+                            <IconDots className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="w-40">
+                          {row
+                            .getVisibleCells()
+                            .find((cell) => cell.column.id === "actions")
+                            ?.column.columnDef.cell &&
+                            flexRender(
+                              row
+                                .getVisibleCells()
+                                .find((cell) => cell.column.id === "actions")
+                                ?.column.columnDef.cell,
+                              row
+                                .getVisibleCells()
+                                .find((cell) => cell.column.id === "actions")
+                                ?.getContext() as any
+                            )}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
+                  )}
                 </TableRow>
               ))
             ) : (
@@ -246,7 +277,7 @@ export function RuthesAppTable<TData extends { id: string | number }>({
                   colSpan={columns.length + (isReorderable ? 2 : 1)}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Sem resultados.
                 </TableCell>
               </TableRow>
             )}
@@ -257,13 +288,13 @@ export function RuthesAppTable<TData extends { id: string | number }>({
       {/* Pagination */}
       <div className="flex items-center justify-between px-2">
         <div className="flex-1 text-sm text-muted-foreground">
-          Page {paginationState.pageIndex + 1} of{" "}
+          Página {paginationState.pageIndex + 1} de{" "}
           {table.getPageCount()}
         </div>
 
         <div className="flex items-center gap-6 lg:gap-8">
           <div className="flex items-center gap-2">
-            <p className="text-sm font-medium">Rows per page</p>
+            <p className="text-sm font-medium">Linhas por página</p>
             <Select
               value={`${paginationState.pageSize}`}
               onValueChange={(value) => {
@@ -290,7 +321,7 @@ export function RuthesAppTable<TData extends { id: string | number }>({
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
-              Previous
+              Anterior
             </Button>
             <Button
               variant="outline"
@@ -298,7 +329,7 @@ export function RuthesAppTable<TData extends { id: string | number }>({
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
-              Next
+              Próximo
             </Button>
           </div>
         </div>
