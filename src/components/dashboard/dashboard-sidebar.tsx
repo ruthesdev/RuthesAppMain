@@ -83,7 +83,7 @@ export function DashboardSidebar({ isCollapsed = false, onToggle }: DashboardSid
     <aside className={`h-full bg-card border-r flex flex-col transition-all duration-300 ease-in-out relative ${
       isCollapsed ? "w-20" : "w-64"
     }`}>
-      {/* Header with Logo and Toggle */}
+      {/* Header with Logo */}
       <div className={`flex items-center justify-center h-16 border-b flex-shrink-0 ${
         isCollapsed ? "px-1" : "px-4"
       }`}>
@@ -94,25 +94,10 @@ export function DashboardSidebar({ isCollapsed = false, onToggle }: DashboardSid
         {!isCollapsed && (
           <h2 className="font-bold text-lg ml-3">{appConfig.app.name}</h2>
         )}
-        
-        {/* Toggle Button - Overlapping border */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onToggle}
-          title={isCollapsed ? "Expandir" : "Colapsar"}
-          className="flex-shrink-0 h-8 w-8 absolute -right-4 top-1/2 -translate-y-1/2 bg-card border border-border hover:bg-accent"
-        >
-          {isCollapsed ? (
-            <ChevronRight className="h-5 w-5" />
-          ) : (
-            <ChevronLeft className="h-5 w-5" />
-          )}
-        </Button>
       </div>
 
-      {/* Navigation - Scrollable */}
-      <nav className="flex-1 overflow-y-auto px-2 py-4 space-y-2">
+      {/* Navigation - No Scroll */}
+      <nav className="flex-1 overflow-hidden px-2 py-4 space-y-2">
         {sidebarItems.map((item) => (
           <div key={item.label}>
             <Button
@@ -169,6 +154,27 @@ export function DashboardSidebar({ isCollapsed = false, onToggle }: DashboardSid
           </div>
         ))}
       </nav>
+
+      {/* Footer with Toggle Button */}
+      <div className="flex-shrink-0 border-t px-2 py-4">
+        <Button
+          variant="ghost"
+          className={`w-full ${isCollapsed ? "justify-center" : "justify-start"}`}
+          onClick={onToggle}
+          title={isCollapsed ? "Mostrar" : "Esconder"}
+        >
+          {isCollapsed ? (
+            <>
+              <ChevronRight className="h-4 w-4" />
+            </>
+          ) : (
+            <>
+              <ChevronLeft className="h-4 w-4 mr-2" />
+              <span className="text-sm">Esconder</span>
+            </>
+          )}
+        </Button>
+      </div>
     </aside>
   )
 }

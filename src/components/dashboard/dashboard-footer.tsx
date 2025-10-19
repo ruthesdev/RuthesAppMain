@@ -38,7 +38,7 @@ export function DashboardFooter() {
 
           {/* Right Section */}
           <div className="text-center md:text-right">
-            <p className="text-xs text-muted-foreground/70">
+            <p className="text-sm text-muted-foreground">
               Desenvolvido por{" "}
               <a
                 href={appConfig.author.url}

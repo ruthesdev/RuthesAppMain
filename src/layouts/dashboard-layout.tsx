@@ -17,8 +17,8 @@ export function DashboardLayout({ children, userName, pageTitle }: DashboardLayo
 
   return (
     <div className="flex h-screen w-full bg-background">
-      {/* Sidebar - Hidden on mobile, shown as drawer */}
-      <div className={`${isMobile ? "hidden" : "block"}`}>
+      {/* Sidebar - Hidden on mobile, shown as drawer - Fixed, No Scroll */}
+      <div className={`${isMobile ? "hidden" : "block"} flex-shrink-0 h-screen overflow-hidden`}>
         <DashboardSidebar
           isCollapsed={sidebarCollapsed}
           onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
@@ -34,7 +34,7 @@ export function DashboardLayout({ children, userName, pageTitle }: DashboardLayo
             onClick={() => setSidebarOpen(false)}
           />
           {/* Sidebar */}
-          <div className="relative z-50 w-64 bg-card">
+          <div className="relative z-50 w-64 bg-card h-screen overflow-hidden">
             <DashboardSidebar
               isCollapsed={false}
               onToggle={() => setSidebarOpen(false)}
@@ -44,7 +44,7 @@ export function DashboardLayout({ children, userName, pageTitle }: DashboardLayo
       )}
 
       {/* Main Container */}
-      <div className="flex flex-col flex-1 overflow-hidden w-full">
+      <div className="flex flex-col flex-1 overflow-hidden">
         {/* Header */}
         <DashboardHeader 
           userName={userName} 
@@ -54,19 +54,16 @@ export function DashboardLayout({ children, userName, pageTitle }: DashboardLayo
         />
 
         {/* Page Content */}
-        <main className="flex-1 flex flex-col overflow-hidden">
-          {/* Scrollable Content */}
-          <div className="flex-1 overflow-y-auto">
-            <div className="p-3 sm:p-4 md:p-6">
-              {children}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="flex-shrink-0">
-            <DashboardFooter />
+        <main className="flex-1 overflow-y-auto">
+          <div className="p-3 sm:p-4 md:p-6">
+            {children}
           </div>
         </main>
+
+        {/* Footer */}
+        <div className="flex-shrink-0">
+          <DashboardFooter />
+        </div>
       </div>
     </div>
   )

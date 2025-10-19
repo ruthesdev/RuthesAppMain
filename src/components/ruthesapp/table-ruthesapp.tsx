@@ -312,13 +312,13 @@ export function RuthesAppTable<TData extends { id: string | number }>({
       {/* Pagination */}
       <div className="flex flex-col gap-4 px-2">
         <div className="flex items-center justify-between gap-4 flex-wrap">
-          <div className="flex-1 text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground">
             Página {paginationState.pageIndex + 1} de{" "}
             {table.getPageCount()}
           </div>
 
           <div className="flex items-center gap-2">
-            <p className="text-sm font-medium">Linhas por página</p>
+            <p className="text-sm">Linhas por página</p>
             <Select
               value={`${paginationState.pageSize}`}
               onValueChange={(value) => {
