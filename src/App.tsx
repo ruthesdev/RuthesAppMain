@@ -5,6 +5,7 @@ import Roadmap from './pages/Roadmap'
 import { Login } from './pages/Login'
 import { Dashboard } from './pages/dashboard'
 import { DashboardUsuarios } from './pages/dashboard/usuarios'
+import { Receita } from './pages/receita'
 import DocumentacaoIndex from './pages/documentacao'
 import DocumentacaoVite from './pages/documentacao/vite'
 import DocumentacaoReact from './pages/documentacao/react'
@@ -34,6 +35,8 @@ function App() {
         return <Dashboard />
       case '/dashboard/usuarios':
         return <DashboardUsuarios />
+      case '/receita':
+        return <Receita />
       case '/roadmap':
         return <Roadmap />
       case '/documentacao':
