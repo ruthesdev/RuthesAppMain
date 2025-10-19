@@ -238,6 +238,16 @@ export function DashboardUsuarios() {
     usuario.email.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
+  // Handler para ações em linhas selecionadas
+  const handleSelectedRowsAction = (selectedRows: Usuario[]) => {
+    console.log("Usuários selecionados:", selectedRows)
+    // Aqui você pode implementar ações em lote, como:
+    // - Deletar múltiplos usuários
+    // - Mudar status em lote
+    // - Exportar dados
+    // - etc
+  }
+
   const columns: ColumnDef<Usuario>[] = [
     {
       accessorKey: "nome",
@@ -319,6 +329,7 @@ export function DashboardUsuarios() {
               searchValue={searchTerm}
               onSearchChange={setSearchTerm}
               searchPlaceholder="Buscar por nome ou email..."
+              onSelectedRowsAction={handleSelectedRowsAction}
               addButton={
                 <Button variant="default" size="sm">
                   <Plus className="mr-2 h-4 w-4" />

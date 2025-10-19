@@ -6,6 +6,7 @@ import {
   IconChevronUp,
   IconLayoutColumns,
   IconDots,
+  IconListCheck,
 } from "@tabler/icons-react"
 import {
   flexRender,
@@ -58,6 +59,7 @@ export interface RuthesAppTableProps<TData> {
   searchPlaceholder?: string
   actionButton?: React.ReactNode
   addButton?: React.ReactNode
+  onSelectedRowsAction?: (selectedRows: TData[]) => void
   pagination?: {
     pageSize?: number
   }
@@ -73,6 +75,7 @@ export function RuthesAppTable<TData extends { id: string | number }>({
   searchPlaceholder = "Buscar...",
   actionButton,
   addButton,
+  onSelectedRowsAction,
   pagination = { pageSize: 10 },
 }: RuthesAppTableProps<TData>) {
   const [data, setData] = React.useState(() => initialData)
@@ -127,6 +130,10 @@ export function RuthesAppTable<TData extends { id: string | number }>({
     }
   }
 
+  // Obter linhas selecionadas
+  const selectedRowIndices = Object.keys(rowSelection).map(Number)
+  const selectedRows = selectedRowIndices.map((index) => data[index]).filter(Boolean)
+
   return (
     <div className="w-full flex flex-col gap-4">
       {/* Toolbar */}
@@ -137,6 +144,31 @@ export function RuthesAppTable<TData extends { id: string | number }>({
         </div>
 
         <div className="flex items-center gap-2 ml-auto flex-wrap justify-end">
+          {selectedRows.length > 0 && onSelectedRowsAction && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm">
+                  <IconListCheck className="mr-2" />
+                  <span className="hidden md:inline">Ações</span>
+                  <span className="md:hidden">({selectedRows.length})</span>
+                  <IconChevronDown className="ml-2" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <div className="px-2 py-1.5 text-xs text-muted-foreground">
+                  {selectedRows.length} linha(s) selecionada(s)
+                </div>
+                <div className="border-t my-1" />
+                <div
+                  className="px-2 py-1.5 text-sm cursor-pointer hover:bg-accent rounded"
+                  onClick={() => onSelectedRowsAction(selectedRows)}
+                >
+                  Executar Ações
+                </div>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
@@ -193,7 +225,7 @@ export function RuthesAppTable<TData extends { id: string | number }>({
           <TableHeader className="bg-muted">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
-                {isReorderable && <TableHead className="w-16">Ações</TableHead>}
+                {isReorderable && <TableHead className="w-16"></TableHead>}
                 <TableHead className="w-8">
                   <Checkbox
                     checked={
